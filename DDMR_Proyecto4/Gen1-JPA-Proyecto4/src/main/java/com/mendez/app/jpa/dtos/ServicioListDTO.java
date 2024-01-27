@@ -1,0 +1,56 @@
+
+
+package com.mendez.app.jpa.dtos;
+
+import com.mendez.app.jpa.models.DetalleReservacion;
+
+public class ServicioListDTO {
+	
+	private Long id;
+	private String nombre;
+	private String descripcion;
+	private Long cantidad;
+	private Float precio;
+	private DetalleReservacion detalle_reservacion;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public Long getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(Long cantidad) {
+		this.cantidad = cantidad;
+	}
+	public Float getPrecio() {
+		return precio;
+	}
+	public void setPrecio(Float precio) {
+		this.precio = precio;
+	}
+	public DetalleReservacion getDetalle_reservacion() {
+		return detalle_reservacion;
+	}
+	public void setDetalle_reservacion(DetalleReservacion detalle_reservacion) {
+		this.detalle_reservacion = detalle_reservacion;
+	}
+	
+	
+	
+	
+
+}

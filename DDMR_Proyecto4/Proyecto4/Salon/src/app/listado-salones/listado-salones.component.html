@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="div">
+      <div class="col-12" text-center>
+  
+        <h2>Listado  de Salones</h2>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Capacidad</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Disponibilidad</th>
+            </tr>
+          </thead>
+          <tbody>
+           
+            <tr *ngFor="let c of listaSalones">
+              <th scope="row">{{c.id}}</th>
+              <td>{{ c.nombre }} {{ c.capacidad }} {{ c.descripcion }}</td>
+              <td>{{ c.disponibilidad }}</td>
+              <td>
+                <a [routerLink]="['/salones/detalle', c.id]" class="btn btn-xs btn-success">Detalle</a>
+              </td>
+
+              <td>
+                <a [routerLink]="['/salones/editar', c.id]" class="btn btn-xs btn-primary">Editar</a>
+              </td>
+
+              <td>
+                <button  class="btn btn-xs btn-danger" (click)="eliminar(c.id)">Eliminar</button>
+              </td>
+
+              <td>
+                <a href="" class="btn btn-xs btn-warning">Ver salones</a>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+  </div>
+ 
+  </div>
+</div>

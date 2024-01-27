@@ -1,0 +1,289 @@
+  <div class="form-group">
+                        <label for="">Fecha Nacimiento</label>
+                        <input type="date" name="fechaNacimiento" id="fechaNacimiento" class="form-control" value="${param.fechaNacimiento}">
+                        <%
+                        if (errores != null && errores.containsKey("fechaNacimiento")){
+                            out.println("<span class='text-danger'>" + errores.get("fechaNacimiento") + "</span>");
+                        }
+                        %>
+                    </div>
+
+
+
+
+
+
+
+  <div class="form-group">
+                        <label for="">Tipo Camion</label>
+                        <input type="text" name="tpCamion" id="tpCamion" class="form-control" value="${param.tpCamion}">
+                        <%
+                        if (errores != null && errores.containsKey("tpCamion")){
+                            out.println("<span class='text-danger'>" + errores.get("tpCamion") + "</span>");
+                        }
+                        %>
+                    </div>
+
+
+
+
+
+
+<div class="dropdown">
+                      <select class="" type="" data-bs-toggle="dropdown" aria-expanded="false">
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" >Action</a></li>
+                        <li><a class="dropdown-item" >Another action</a></li>
+                        <li><a class="dropdown-item" >Something else here</a></li>
+                      </ul>
+                      </select>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1:50 p. m., 12/1/2024] Diary: <%@ page import="com.medina.app.rutas.models.enums.Marcas, com.medina.app.rutas.models.enums.Tipos, com.medina.app.rutas.models.enums.CamionModelo" %>
+[1:50 p. m., 12/1/2024] Diary: <div class="form-group">
+    <label for="tipoCamion">Tipo de Camión</label>
+    <select name="tipoCamion" id="tipoCamion" class="form-control">
+        <c:forEach var="tipoCamion" items="${Tipos.values()}">
+            <option value="${tipoCamion}">${tipoCamion}</option>
+        </c:forEach>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="modelo">Modelo</label>
+    <select name="modelo" id="modelo" class="form-control">
+        <c:forEach var="modelo" items="${CamionModelo.values()}">
+            <option value="${modelo}">${modelo}</option>
+        </c:forEach>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="marca">Marca</label>
+    <select name="marca" id="marca" class="form-control">
+        <c:forEach var="marca" items="${Marcas.values()}">
+            <option value="${marca}">${marca}</option>
+        </c:forEach>
+    </select>
+</div>
+
+
+
+
+
+
+
+
+<div class="form-group">
+                       <label for="">Fecha Nacimiento</label>
+                       <input type="date" name="fechaNacimiento" id="fechaNacimiento" class="form-control"
+                              value="${param.fechaNacimiento}">
+                       <%
+                       if (errores != null && errores.containsKey("fechaNacimiento")) {
+                           out.println("<span class='text-danger'>" + errores.get("fechaNacimiento") + "</span>");
+                       }
+                       %>
+                   </div>
+
+
+
+
+<div class="form-group">
+                       <label for="">Fecha Nacimiento</label>
+                       <input type="date" name="fechaNacimiento" id="fechaNacimiento" class="form-control"
+                              value="${param.fechaNacimiento}">
+                       <%
+                       if (errores != null && errores.containsKey("fechaNacimiento")) {
+                           out.println("<span class='text-danger'>" + errores.get("fechaNacimiento") + "</span>");
+                       }
+                       %>
+                   </div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="form-group">
+                        <label for="">Fecha Nacimiento</label>
+                        <input type="date" name="fechaNacimiento" min="01/01/2004" max="01/01/2025" id="fechaNacimiento" class="form-control" value="${param.fechaNacimiento}">
+                        <%
+                        if (errores != null && errores.containsKey("fechaNacimiento")){
+                            out.println("<span class='text-danger'>" + errores.get("fechaNacimiento") + "</span>");
+                        }
+                        %>
+
+                    </div>
+
+
+
+
+
+LISTA DE ENUMS EN EL ALTA DE CAMION 
+PINTAR
+OBTENER
+GUARDAR
+
+UTILIZAMOS UN FOR  
+
+
+
+
+
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        Marcas[] marcas= Marcas.values();
+        Tipos[] tipos= Tipos.values();
+
+        req.setAttribute("tipos",tipos);
+        req.setAttribute("marcas",marcas);
+
+        getServletContext().getRequestDispatcher("/altaCamion.jsp").forward(req, resp);
+
+    }
+
+
+<%
+    Tipos[] tipos= (Tipos[]) request.getAttribute("tipos");
+%>
+
+
+
+<div class="form-group">
+                    <label for="tipoCamion">Tipo de Camión</label>
+                     <select name="tipoCamion" id="tipoCamion" class="form-control">
+                        <option selected="true" disabled="disabled">--------Seleccione--------</option>
+                        <%
+                        for (Tipos tipoEnum : tipos){
+                        %>
+                           <option value="<%=tipoEnum.name() %>"><%= tipoEnum.name () %></option>
+                        <%
+                        }
+                        %>
+                    </select>
+                </div>
+
+
+
+
+
+
+Calendar l = new GregorianCalendar();
+        Integer[] anios = new Integer[22];
+        String[] aniosS = new String[22];
+        int a = 0;
+        for (int i = -20; i< 2; i++)
+        {
+            anios[a]=(l.get(Calendar.YEAR))+i;
+            a++;
+        }
+        a=0;
+        for(Integer b : anios)
+        {
+            aniosS[a]= String.valueOf(b);
+            a++;
+        }
+
+
+
+
+<div class="form-group">
+                    <label for="modelo"> Modelo </label>
+                      <select name="modelo" id="modelo" class="form-control">
+                        <option selected="true" disabled="disabled">---Seleccione---</option>
+                        <%
+                            for(String a : anios){
+                         %>
+                        <option value= "<%= a %>" ><%= a %></option>
+                    <%
+                        }
+                    %>
+                  </select>
+                  <%
+                    if (errores != null && errores.containsKey("modelo")){
+                       out.println("<span class='text-danger'>" + errores.get("modelo") + "</span>");
+                   }
+                  %>
+
+
+
+
+        Calendar l = new GregorianCalendar();
+        Integer[] anios = new Integer[22];
+        String[] aniosS = new String[22];
+        int a = 0;
+        for (int i = -20; i< 2; i++)
+        {
+            anios[a]=(l.get(Calendar.YEAR))+i;
+            a++;
+        }
+        a=0;
+        for(Integer b : anios)
+        {
+            aniosS[a]= String.valueOf(b);
+            a++;
+        }
+
+        Marcas[] marcas = Marcas.values();
+        Tipos[] tipos = Tipos.values();
+        req.setAttribute("tipos", tipos);
+        req.setAttribute("marcas", marcas);
+        req.setAttribute("anios", aniosS);
+
+        getServletContext().getRequestDispatcher("/altaCamion.jsp").forward(req, resp);
+
+    }
+
+<%
+    String[] anios= (String[]) request.getAttribute("anios");
+%>
+
+
+
+<div class="form-group">
+                    <label for="modelo"> Modelo </label>
+                      <select name="modelo" id="modelo" class="form-control">
+                        <option selected="true" disabled="disabled">---Seleccione---</option>
+                        <%
+                            for(String a : anios){
+                         %>
+                        <option value= "<%= a %>" ><%= a %></option>
+                    <%
+                        }
+                    %>
+                  </select>
+                  <%
+                    if (errores != null && errores.containsKey("modelo")){
+                       out.println("<span class='text-danger'>" + errores.get("modelo") + "</span>");
+                   }
+                  %>
+                </div>
+
+
+
+
+
+
+
+
+
